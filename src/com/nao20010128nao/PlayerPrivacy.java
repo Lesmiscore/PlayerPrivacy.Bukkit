@@ -115,7 +115,7 @@ public class PlayerPrivacy extends JavaPlugin {
 					if (!commandCapture.containsKey(key)) {
 						commandCapture.put(key, new HashSet<String>());
 					}
-					for (int j = 0; j < ccSize; j++) {
+					for (int j = 0; j < cckSize; j++) {
 						commandCapture.get(key).add(dis.readUTF());
 					}
 				}
