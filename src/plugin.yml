@@ -1,0 +1,40 @@
+name: PlayerPrivacy
+main: com.nao20010128nao.PlayerPrivacy
+version: 1.0.0
+api: [1.0.0]
+load: STARTUP
+author: nao20010128nao
+description: A few tools contained
+website: https://github.com/nao20010128nao
+permissions:
+ pp.*:
+  children:
+   pp.all:
+    description: ""
+    default: op
+commands:
+ cb:
+  description: Blocks the chat who spams the chat.
+  usage: /cb <add|remove> <player>
+  permission: pp.all
+  permission-message: You don't have permission to use this command.
+ cc:
+  description: Redirects the command that the target types.
+  usage: /cc <add|remove> <player> <dest>
+  permission: pp.all
+  permission-message: You don't have permission to use this command.
+ dc:
+  description: Rejects all the commands who uses the commands badly.
+  usage: /dc <add|remove> <player>
+  permission: pp.all
+  permission-message: You don't have permission to use this command.
+ ml:
+  description: Stop the player moving who griefs the world.
+  usage: /cc <add|remove> <player>
+  permission: pp.all
+  permission-message: You don't have permission to use this command.
+ rcmd:
+  description: Allows you to run commands as console or someone else.
+  usage: /cc <add|remove> <player>
+  permission: pp.all
+  permission-message: You don't have permission to use this command.
