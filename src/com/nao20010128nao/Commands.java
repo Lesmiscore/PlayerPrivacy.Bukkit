@@ -35,11 +35,17 @@ public final class Commands {
 				return false;
 			}
 			HashSet<String> people = plugin.config.chatBlock;
-			StringBuilder listBuilder = new StringBuilder(people.size() * 16);
-			for (String player : people) {
-				listBuilder.append(player).append(", §r");
+			String toShow;
+			if (people.size() == 0) {
+				toShow = "";
+			} else {
+				StringBuilder listBuilder = new StringBuilder(
+						people.size() * 16);
+				for (String player : people) {
+					listBuilder.append(player).append(", §r");
+				}
+				toShow = listBuilder.substring(0, listBuilder.length() - 5);
 			}
-			String toShow = listBuilder.substring(0, listBuilder.length() - 5);
 			sender.sendMessage("There are " + people.size()
 					+ " people in the list:");
 			sender.sendMessage(toShow);
@@ -88,11 +94,17 @@ public final class Commands {
 				return false;
 			}
 			HashMap<String, PlayerPrivacy.PPConfig.ComparerHS> people = plugin.config.commandCapture;
-			StringBuilder listBuilder = new StringBuilder(people.size() * 16);
-			for (String player : people.keySet()) {
-				listBuilder.append(player).append(", §r");
+			String toShow;
+			if (people.size() == 0) {
+				toShow = "";
+			} else {
+				StringBuilder listBuilder = new StringBuilder(
+						people.size() * 16);
+				for (String player : people.keySet()) {
+					listBuilder.append(player).append(", §r");
+				}
+				toShow = listBuilder.substring(0, listBuilder.length() - 5);
 			}
-			String toShow = listBuilder.substring(0, listBuilder.length() - 5);
 			sender.sendMessage("There are " + people.size()
 					+ " people in the list:");
 			sender.sendMessage(toShow);
@@ -110,11 +122,17 @@ public final class Commands {
 			} else {
 				people = Collections.emptySet();
 			}
-			StringBuilder listBuilder = new StringBuilder(people.size() * 16);
-			for (String player : people) {
-				listBuilder.append(player).append(", §r");
+			String toShow;
+			if (people.size() == 0) {
+				toShow = "";
+			} else {
+				StringBuilder listBuilder = new StringBuilder(
+						people.size() * 16);
+				for (String player : people) {
+					listBuilder.append(player).append(", §r");
+				}
+				toShow = listBuilder.substring(0, listBuilder.length() - 5);
 			}
-			String toShow = listBuilder.substring(0, listBuilder.length() - 5);
 			sender.sendMessage("There are " + people.size()
 					+ " people in the list:");
 			sender.sendMessage(toShow);
@@ -170,11 +188,17 @@ public final class Commands {
 				return false;
 			}
 			HashSet<String> people = plugin.config.denyCommand;
-			StringBuilder listBuilder = new StringBuilder(people.size() * 16);
-			for (String player : people) {
-				listBuilder.append(player).append(", §r");
+			String toShow;
+			if (people.size() == 0) {
+				toShow = "";
+			} else {
+				StringBuilder listBuilder = new StringBuilder(
+						people.size() * 16);
+				for (String player : people) {
+					listBuilder.append(player).append(", §r");
+				}
+				toShow = listBuilder.substring(0, listBuilder.length() - 5);
 			}
-			String toShow = listBuilder.substring(0, listBuilder.length() - 5);
 			sender.sendMessage("There are " + people.size()
 					+ " people in the list:");
 			sender.sendMessage(toShow);
@@ -223,11 +247,17 @@ public final class Commands {
 				return false;
 			}
 			HashSet<String> people = plugin.config.moveLock;
-			StringBuilder listBuilder = new StringBuilder(people.size() * 16);
-			for (String player : people) {
-				listBuilder.append(player).append(", §r");
+			String toShow;
+			if (people.size() == 0) {
+				toShow = "";
+			} else {
+				StringBuilder listBuilder = new StringBuilder(
+						people.size() * 16);
+				for (String player : people) {
+					listBuilder.append(player).append(", §r");
+				}
+				toShow = listBuilder.substring(0, listBuilder.length() - 5);
 			}
-			String toShow = listBuilder.substring(0, listBuilder.length() - 5);
 			sender.sendMessage("There are " + people.size()
 					+ " people in the list:");
 			sender.sendMessage(toShow);
