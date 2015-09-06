@@ -27,8 +27,8 @@ public final class Commands {
 	}
 
 	public boolean cbCmd(CommandSender sender, String label, String[] args) {
-		if (checkPerm(sender))
-			return true;
+		if (!checkPerm(sender))
+			return false;
 		if (args.length == 1) {
 			if (!"list".equalsIgnoreCase(args[0])) {
 				sender.sendMessage("§aUsage: /cb <add|remove|list> <player>");
@@ -80,8 +80,8 @@ public final class Commands {
 	}
 
 	public boolean ccCmd(CommandSender sender, String label, String[] args) {
-		if (checkPerm(sender))
-			return true;
+		if (!checkPerm(sender))
+			return false;
 		if (args.length == 1) {
 			if (!"list".equalsIgnoreCase(args[0])) {
 				sender.sendMessage("§aUsage: /cc <add|remove|list> <player>");
@@ -162,8 +162,8 @@ public final class Commands {
 	}
 
 	public boolean dcCmd(CommandSender sender, String label, String[] args) {
-		if (checkPerm(sender))
-			return true;
+		if (!checkPerm(sender))
+			return false;
 		if (args.length == 1) {
 			if (!"list".equalsIgnoreCase(args[0])) {
 				sender.sendMessage("§aUsage: /dc <add|remove|list> <player>");
@@ -215,8 +215,8 @@ public final class Commands {
 	}
 
 	public boolean mlCmd(CommandSender sender, String label, String[] args) {
-		if (checkPerm(sender))
-			return true;
+		if (!checkPerm(sender))
+			return false;
 		if (args.length == 1) {
 			if (!"list".equalsIgnoreCase(args[0])) {
 				sender.sendMessage("§aUsage: /ml <add|remove|list> <player>");
@@ -268,8 +268,8 @@ public final class Commands {
 	}
 
 	public boolean rcmdCmd(CommandSender sender, String label, String[] args) {
-		if (checkPerm(sender))
-			return true;
+		if (!checkPerm(sender))
+			return false;
 		if (args.length <= 2) {
 			sender.sendMessage("§aUsage: /rcmd <player|console> <command without first \"/\">");
 			return false;
