@@ -22,6 +22,7 @@ import org.bukkit.plugin.java.JavaPluginLoader;
  */
 public class PlayerPrivacy extends JavaPlugin {
 	public PPConfig config = new PPConfig();
+	Commands cmd = new Commands(this);
 
 	public PlayerPrivacy() {
 		// TODO 自動生成されたコンストラクター・スタブ
@@ -50,7 +51,22 @@ public class PlayerPrivacy extends JavaPlugin {
 	public boolean onCommand(CommandSender sender, Command command,
 			String label, String[] args) {
 		// TODO 自動生成されたメソッド・スタブ
-		return super.onCommand(sender, command, label, args);
+		if ("cb".equalsIgnoreCase(label)) {
+			return cmd.cbCmd(sender, label, args);
+		}
+		if ("cc".equalsIgnoreCase(label)) {
+			return cmd.ccCmd(sender, label, args);
+		}
+		if ("dc".equalsIgnoreCase(label)) {
+			return cmd.dcCmd(sender, label, args);
+		}
+		if ("ml".equalsIgnoreCase(label)) {
+			return cmd.mlCmd(sender, label, args);
+		}
+		if ("rcmd".equalsIgnoreCase(label)) {
+			return cmd.rcmdCmd(sender, label, args);
+		}
+		return false;
 	}
 
 	class PPConfig {

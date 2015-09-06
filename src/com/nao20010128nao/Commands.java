@@ -10,10 +10,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
-public final class CommandProcessor {
+public final class Commands {
 	PlayerPrivacy plugin;
 
-	public CommandProcessor(PlayerPrivacy plugin) {
+	public Commands(PlayerPrivacy plugin) {
 		// TODO 自動生成されたコンストラクター・スタブ
 		this.plugin = plugin;
 	}
@@ -286,6 +286,23 @@ public final class CommandProcessor {
 			String toDispatch = dispatchCmd.substring(0,
 					dispatchCmd.length() - 2);
 			sender.getServer().dispatchCommand(ccs, toDispatch);
+			return true;
 		}
+		Player player;
+		try {
+			UUID uuid = UUID.fromString(args[1]);
+			player = plugin.getServer().getPlayer(uuid);
+		} catch (Throwable ex) {
+			player = plugin.getServer().getPlayer(args[1]);
+		}
+		String[] command = new String[args.length - 1];
+		System.arraycopy(args, 1, command, 0, args.length - 1);
+		StringBuilder dispatchCmd = new StringBuilder(command.length * 10);
+		for (String s : command) {
+			dispatchCmd.append(s).append(' ');
+		}
+		String toDispatch = dispatchCmd.substring(0, dispatchCmd.length() - 2);
+		sender.getServer().dispatchCommand(player, toDispatch);
+		return true;
 	}
 }
