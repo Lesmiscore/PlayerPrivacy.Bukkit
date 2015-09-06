@@ -87,7 +87,7 @@ public final class Commands {
 				sender.sendMessage("§aUsage: /cc <add|remove|list> <player>");
 				return false;
 			}
-			HashMap<String, HashSet<String>> people = plugin.config.commandCapture;
+			HashMap<String, PlayerPrivacy.PPConfig.ComparerHS> people = plugin.config.commandCapture;
 			StringBuilder listBuilder = new StringBuilder(people.size() * 16);
 			for (String player : people.keySet()) {
 				listBuilder.append(player).append(", §r");
@@ -103,7 +103,7 @@ public final class Commands {
 				sender.sendMessage("§aUsage: /cc <add|remove|list> <player>");
 				return false;
 			}
-			HashMap<String, HashSet<String>> data = plugin.config.commandCapture;
+			HashMap<String, PlayerPrivacy.PPConfig.ComparerHS> data = plugin.config.commandCapture;
 			Set<String> people;
 			if (data.containsKey(args[1])) {
 				people = data.get(args[1]);
@@ -137,11 +137,11 @@ public final class Commands {
 		} else {
 			playerName = player.getName();
 		}
-		HashSet<String> toEdit;
+		PlayerPrivacy.PPConfig.ComparerHS toEdit;
 		if (plugin.config.commandCapture.containsKey(playerName)) {
 			toEdit = plugin.config.commandCapture.get(playerName);
 		} else {
-			toEdit = new HashSet<>();
+			toEdit = plugin.config.new ComparerHS();
 			plugin.config.commandCapture.put(playerName, toEdit);
 		}
 		switch (args[0]) {

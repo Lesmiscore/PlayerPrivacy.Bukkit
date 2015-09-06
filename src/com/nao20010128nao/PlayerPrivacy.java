@@ -70,10 +70,10 @@ public class PlayerPrivacy extends JavaPlugin {
 	}
 
 	class PPConfig {
-		public HashSet<String> chatBlock = new HashSet<>();
-		public HashMap<String, HashSet<String>> commandCapture = new HashMap<>();
-		public HashSet<String> denyCommand = new HashSet<>();
-		public HashSet<String> moveLock = new HashSet<>();
+		public HashSet<String> chatBlock = new ComparerHS();
+		public HashMap<String, ComparerHS> commandCapture = new HashMap<>();
+		public HashSet<String> denyCommand = new ComparerHS();
+		public HashSet<String> moveLock = new ComparerHS();
 
 		public void save(File file) {
 			DataOutputStream dos = null;
@@ -129,7 +129,7 @@ public class PlayerPrivacy extends JavaPlugin {
 					String key = dis.readUTF();
 					int cckSize = dis.readInt();
 					if (!commandCapture.containsKey(key)) {
-						commandCapture.put(key, new HashSet<String>());
+						commandCapture.put(key, new ComparerHS());
 					}
 					for (int j = 0; j < cckSize; j++) {
 						commandCapture.get(key).add(dis.readUTF());
@@ -153,6 +153,24 @@ public class PlayerPrivacy extends JavaPlugin {
 					// TODO 自動生成された catch ブロック
 					e.printStackTrace();
 				}
+			}
+		}
+
+		public class ComparerHS extends HashSet<String> {
+			@Override
+			public boolean add(String e) {
+				// TODO 自動生成されたメソッド・スタブ
+				return super.add(e.toLowerCase());
+			}
+
+			@Override
+			public boolean contains(Object o) {
+				// TODO 自動生成されたメソッド・スタブ
+				if (!(o instanceof String)) {
+					return false;
+				}
+				String str = (String) o;
+				return super.contains(str.toLowerCase());
 			}
 		}
 	}
