@@ -90,7 +90,6 @@ public final class Commands {
 			return false;
 		if (args.length == 1) {
 			if (!"list".equalsIgnoreCase(args[0])) {
-				sender.sendMessage("§aUsage: /cc <add|remove|list> <player>");
 				return false;
 			}
 			HashMap<String, PlayerPrivacy.PPConfig.ComparerHS> people = plugin.config.commandCapture;
@@ -112,7 +111,6 @@ public final class Commands {
 		}
 		if (args.length == 2) {
 			if (!"list".equalsIgnoreCase(args[0])) {
-				sender.sendMessage("§aUsage: /cc <add|remove|list> <player>");
 				return false;
 			}
 			HashMap<String, PlayerPrivacy.PPConfig.ComparerHS> data = plugin.config.commandCapture;
@@ -138,8 +136,7 @@ public final class Commands {
 			sender.sendMessage(toShow);
 			return true;
 		}
-		if (args.length != 2) {
-			sender.sendMessage("§aUsage: /cc <add|remove|list> <player>");
+		if (args.length != 3) {
 			return false;
 		}
 		Player player;
@@ -155,6 +152,19 @@ public final class Commands {
 		} else {
 			playerName = player.getName();
 		}
+		Player player2;
+		try {
+			UUID uuid = UUID.fromString(args[1]);
+			player2 = plugin.getServer().getPlayer(uuid);
+		} catch (Throwable ex) {
+			player2 = plugin.getServer().getPlayer(args[1]);
+		}
+		String playerName2;
+		if (player2 == null) {
+			playerName2 = args[1];
+		} else {
+			playerName2 = player.getName();
+		}
 		PlayerPrivacy.PPConfig.ComparerHS toEdit;
 		if (plugin.config.commandCapture.containsKey(playerName)) {
 			toEdit = plugin.config.commandCapture.get(playerName);
@@ -164,9 +174,9 @@ public final class Commands {
 		}
 		switch (args[0]) {
 		case "add":
-			toEdit.add(playerName);
+			toEdit.add(playerName2);
 			sender.sendMessage("§aRegeistered redirect request from "
-					+ sender.getName() + " to " + playerName + " .");
+					+ playerName + " to " + playerName2 + " .");
 			return true;
 		case "remove":
 			toEdit.remove(playerName);
@@ -174,7 +184,6 @@ public final class Commands {
 					+ sender.getName() + " to " + playerName + " .");
 			return true;
 		default:
-			sender.sendMessage("§aUsage: /cc <add|remove|list> <player>");
 			return false;
 		}
 	}
